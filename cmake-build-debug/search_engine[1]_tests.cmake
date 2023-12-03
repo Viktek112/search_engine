@@ -1,1 +1,5 @@
-set(  search_engine_TESTS)
+add_test([=[wordCleaningTest.HandlesZeroInput]=]  [==[E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine.exe]==] [==[--gtest_filter=wordCleaningTest.HandlesZeroInput]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[wordCleaningTest.HandlesZeroInput]=]  PROPERTIES WORKING_DIRECTORY [==[E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[wordCleaningTest.HandlesPositiveInput]=]  [==[E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine.exe]==] [==[--gtest_filter=wordCleaningTest.HandlesPositiveInput]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[wordCleaningTest.HandlesPositiveInput]=]  PROPERTIES WORKING_DIRECTORY [==[E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  search_engine_TESTS wordCleaningTest.HandlesZeroInput wordCleaningTest.HandlesPositiveInput)

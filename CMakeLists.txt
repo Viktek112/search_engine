@@ -5,8 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 add_subdirectory(nlohmann_json)
 
-add_executable(search_engine main.cpp)
-
 target_link_libraries(search_engine PRIVATE nlohmann_json::nlohmann_json)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -24,3 +22,6 @@ enable_testing()
 target_link_libraries(search_engine PRIVATE gtest_main)
 include(GoogleTest)
 gtest_discover_tests(search_engine)
+
+add_subdirectory(src)
+add_subdirectory(include)
