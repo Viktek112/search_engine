@@ -1,3 +1,4 @@
+#pragma once
 #include "../include/engine.h"
 #include <gtest/gtest.h>
 #include "nlohmann/json.hpp"
@@ -16,12 +17,10 @@ std::string wordCleaning(std::string word) {
     return word;
 }
 
-// Tests factorial of 0.
 TEST(wordCleaningTest, HandlesZeroInput) {
 EXPECT_EQ(wordCleaning(""), "");
 }
 
-// Tests factorial of positive numbers.
 TEST(wordCleaningTest, HandlesPositiveInput) {
 EXPECT_EQ(wordCleaning("!@#$%^&*()_+{}-=[]{};':\"\\|,<.>/?`~test!@#$%^&*()_+{}-=[]{};':\"\\|,<.>/?`~"), "test");
 EXPECT_EQ(wordCleaning("&&test's&&"), "test's");
@@ -43,7 +42,7 @@ class OpeningError: public std::exception {
 private:
     std::string message;
 public:
-    OpeningError(const std::string& fileName): message{ "Failed to open file: " + fileName + "."} {}
+    explicit OpeningError(const std::string& fileName): message{ "Failed to open file: " + fileName + "."} {}
     const char* what() const noexcept override{
         return message.c_str();
     }
@@ -90,7 +89,7 @@ public:
     std::vector<std::string> GetTextDocuments(){
         std::vector<std::string> docums;
         if (configJsonFile.contains("files")) {
-            for (auto i: configJsonFile["files"]) {
+            for (const auto& i: configJsonFile["files"]) {
                 std::string bufPath = i;
                 std::replace(bufPath.begin(), bufPath.end(), '/', '\\');
                 std::ifstream subFile(bufPath);
@@ -124,7 +123,7 @@ public:
     std::vector<std::string> GetRequests(){
         std::vector <std::string> requests = {};
         if (requestsJsonFile.contains("requests")) {
-            for (auto i: requestsJsonFile["requests"]) {
+            for (const auto& i: requestsJsonFile["requests"]) {
                 requests.push_back((std::string)i);
             }
             return requests;
@@ -135,7 +134,7 @@ public:
 
     void putAnswers(std::vector<std::vector<std::pair<int, float>>>answers){
         for (int i = 0; i < answers.size(); i++) {
-            std::string numOfRequest = "";
+            std::string numOfRequest;
             for (int n = 0; n < 3-std::to_string(i).length();n++) {
                 numOfRequest += "0";
             }
@@ -143,10 +142,10 @@ public:
 
             if (!answers[i].empty()) {
                 answersJsonFile["answers"]["request" + numOfRequest]["result"] = "true";
-                for (int j = 0; j < answers[i].size(); j++) {
+                for (auto & j : answers[i]) {
                     nlohmann::json::value_type block;
-                    block["docid"] = answers[i][j].first;
-                    block["rank"] = answers[i][j].second;
+                    block["docid"] = j.first;
+                    block["rank"] = j.second;
                     answersJsonFile["answers"]["request" + numOfRequest]["relevance"].push_back(block);
                 }
             }
@@ -162,7 +161,7 @@ private:
     std::map<std::string, std::vector<Entry>> freqDictionary;
     std::vector<std::string> docs = {};
 
-    void convertDocumentsIntoDatabase(std::string txt, size_t num) {
+    void convertDocumentsIntoDatabase(const std::string& txt, size_t num) {
         std::map<std::string,size_t> words;
         std::istringstream iss(txt);
         std::string buf;
@@ -175,24 +174,24 @@ private:
                 words[buf] += 1;
             }
         }
-        for (auto j = words.begin(); j != words.end(); j++) {
+        for (auto & word : words) {
             freqAccess.lock();
-            if (freqDictionary.count(j->first) == 0) {
-                std::pair<std::string,std::vector<Entry>> PaBuf(j->first,{{num, j->second}});
+            if (freqDictionary.count(word.first) == 0) {
+                std::pair<std::string,std::vector<Entry>> PaBuf(word.first,{{num, word.second}});
                 freqDictionary.insert(PaBuf);
             } else {
-                freqDictionary[j->first].push_back({num,j->second});
+                freqDictionary[word.first].push_back({num,word.second});
             }
             freqAccess.unlock();
         }
     }
 
 public:
-    void UpdateDocumentBase(const std::vector<std::string> doc) {
+    void UpdateDocumentBase(const std::vector<std::string>& doc) {
         docs = doc;
         std::vector<std::thread> threads = {};
         for (int i = 0; i < doc.size(); i++) {
-            threads.push_back(std::thread(&InvertedIndex::convertDocumentsIntoDatabase, this, docs[i], i));
+            threads.emplace_back(&InvertedIndex::convertDocumentsIntoDatabase, this, docs[i], i);
         }
         for (int i = 0; i < doc.size(); i++) {
             threads[i].join();
@@ -210,7 +209,7 @@ private:
     ConverterJSON converter;
     std::map<std::string, std::vector<Entry>> freqDictionary;
 public:
-    SearchServer(InvertedIndex& idx) : index(idx){
+    explicit SearchServer(InvertedIndex& idx) : index(idx){
         freqDictionary = idx.getFreqDictionary();
     };
 
@@ -220,12 +219,12 @@ public:
 
     std::vector<std::vector<RelativeIndex>> search(const std::vector<std::string>& requestsInput){
         std::vector<std::vector<RelativeIndex>> result = {};
-        for (int i = 0; i < requestsInput.size(); i++) {
+        for (const auto & i : requestsInput) {
             std::map<std::string, Entry> wordRelevance;
             std::vector<int> absoluteRelevance = {};
             std::vector<RelativeIndex> relevantRelevance = {};
-            result.push_back({});
-            std::istringstream iss(requestsInput[i]);
+            result.emplace_back();
+            std::istringstream iss(i);
             std::string buf;
             std::vector<std::string> uniqueWords = {};
             while (!iss.eof()){
@@ -235,7 +234,7 @@ public:
                     uniqueWords.push_back(buf);
                 }
             }
-            for (auto j : uniqueWords) {
+            for (const auto& j : uniqueWords) {
                 for (size_t k = 0; k < converter.GetTextDocuments().size(); k++){
                     if (freqDictionary.count(j) != 0) {
                         wordRelevance.insert(std::pair<std::string, Entry>(j, (Entry) {k, freqDictionary[j][k].count}));
@@ -246,15 +245,15 @@ public:
             }
             for (size_t j = 0; j < converter.GetTextDocuments().size(); j++) {
                 int currentAbsRelevence = 0;
-                for (auto k : wordRelevance) {
+                for (const auto& k : wordRelevance) {
                     if (k.second.docId == j) {
-                        currentAbsRelevence += k.second.count;
+                        currentAbsRelevence += (int)k.second.count;
                     }
                 }
                 absoluteRelevance.push_back(currentAbsRelevence);
             }
             for (int j = 0; j < absoluteRelevance.size();j++) {
-                relevantRelevance.push_back({(size_t)j,(float)absoluteRelevance[j]/ *std::max_element(absoluteRelevance.begin(),absoluteRelevance.end())});
+                relevantRelevance.push_back({(size_t)j,(float)absoluteRelevance[j]/ (float)*std::max_element(absoluteRelevance.begin(),absoluteRelevance.end())});
             }
             result.push_back(relevantRelevance);
         }
