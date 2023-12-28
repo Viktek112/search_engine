@@ -1,4 +1,11 @@
-#include "engine.cpp"
+#include "ConverterJSON.h"
+#include "InvertedIndex.h"
+#include "SearchEngine.h"
+#include "Structs.h"
+#include <vector>
+#include <map>
+#include "Errors.h"
+#include <gtest/gtest.h>
 
 int main(int argc, char** argv) {
 

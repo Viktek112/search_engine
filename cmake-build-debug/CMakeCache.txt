@@ -164,7 +164,7 @@ CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 CMAKE_LINKER:FILEPATH=C:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/ld.exe
 
 //make program
-CMAKE_MAKE_PROGRAM:FILEPATH=C:/PROGRA~1/JETBRA~1/CLION2~1.1/bin/ninja/win/ninja.exe
+CMAKE_MAKE_PROGRAM:FILEPATH=C:/Program Files/JetBrains/CLion 2022.2.1/bin/ninja/win/ninja.exe
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -202,7 +202,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=search_engine
+CMAKE_PROJECT_NAME:STATIC=Search-Engine
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=3.11.2
@@ -313,11 +313,21 @@ FETCHCONTENT_QUIET:BOOL=ON
 // for googletest
 FETCHCONTENT_SOURCE_DIR_GOOGLETEST:PATH=
 
+//When not empty, overrides where to find pre-populated content
+// for json
+FETCHCONTENT_SOURCE_DIR_JSON:PATH=
+
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of googletest
 FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of json
+FETCHCONTENT_UPDATES_DISCONNECTED_JSON:BOOL=OFF
+
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
 
 //Enable installation of googletest. (Projects embedding googletest
 // may want to turn this OFF.)
@@ -349,6 +359,24 @@ JSON_MultipleHeaders:BOOL=ON
 
 //Include as system headers (skip for clang-tidy).
 JSON_SystemInclude:BOOL=OFF
+
+//Value Computed by CMake
+Search-Engine_BINARY_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug
+
+//Value Computed by CMake
+Search-Engine_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Search-Engine_SOURCE_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine
+
+//Value Computed by CMake
+SearchEngine_BINARY_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug
+
+//Value Computed by CMake
+SearchEngine_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+SearchEngine_SOURCE_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/_deps/googletest-build/googlemock
@@ -395,8 +423,6 @@ gtest_build_tests:BOOL=OFF
 //Disable uses of pthreads in gtest.
 gtest_disable_pthreads:BOOL=OFF
 
-//Use shared (DLL) run-time lib even when Google Test is built
-// as static lib.
 gtest_force_shared_crt:BOOL=ON
 
 //Build gtest with internal symbols hidden in shared libraries.
@@ -406,13 +432,13 @@ gtest_hide_internal_symbols:BOOL=OFF
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 
 //Value Computed by CMake
-nlohmann_json_BINARY_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/nlohmann_json
+nlohmann_json_BINARY_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/_deps/json-build
 
 //Value Computed by CMake
 nlohmann_json_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-nlohmann_json_SOURCE_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine/nlohmann_json
+nlohmann_json_SOURCE_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/_deps/json-src
 
 //Value Computed by CMake
 search_engine_BINARY_DIR:STATIC=E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug
@@ -558,7 +584,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -614,6 +640,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Python
 FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[C:/Users/Витёк/AppData/Local/Programs/Python/Python311/python.exe][cfound components: Interpreter ][v3.11.4()]
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //Build the unit tests when BUILD_TESTING is enabled.
 JSON_BuildTests:INTERNAL=OFF
 NLOHMANN_JSON_CONFIG_INSTALL_DIR:INTERNAL=share/cmake/nlohmann_json
@@ -624,6 +652,7 @@ _Python_EXECUTABLE:INTERNAL=C:/Users/Витёк/AppData/Local/Programs/Python/Py
 //Python Properties
 _Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;4;64;;cp311-win_amd64;C:\Users\┬шЄ╕ъ\AppData\Local\Programs\Python\Python311\Lib;C:\Users\┬шЄ╕ъ\AppData\Local\Programs\Python\Python311\Lib;C:\Users\┬шЄ╕ъ\AppData\Local\Programs\Python\Python311\Lib\site-packages;C:\Users\┬шЄ╕ъ\AppData\Local\Programs\Python\Python311\Lib\site-packages
 _Python_INTERPRETER_SIGNATURE:INTERNAL=cca497fb6869e7ef6bb2d6eecebee8a1
+cmake_package_name:INTERNAL=GTest
 generated_dir:INTERNAL=E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/_deps/googletest-build/googletest/generated
 //ADVANCED property for variable: gmock_build_tests
 gmock_build_tests-ADVANCED:INTERNAL=1

@@ -1,39 +1,16 @@
 # ninja log v5
-0	462	7201078440566555	CMakeFiles/search_engine.dir/main.cpp.obj	cf91473442fb2f83
-463	539	7201078441314573	search_engine.exe	1f07d6b816044ba9
-7	1014	7201080240545088	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	be77c1dca8cd4330
-3	4637	7201080276708399	CMakeFiles/search_engine.dir/main.cpp.obj	2c1bf079ad889a2a
-6	5541	7201080285724533	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	cbb2f96d57dc5101
-5543	7450	7201080304909270	lib/libgtestd.a	9a30261c9583a960
-7450	7500	7201080305417714	lib/libgtest_maind.a	2d8729c939ca1ce
-7500	12577	7201080356169452	search_engine.exe	29d975eeaffb8c15
-7500	12577	7201080356169452	search_engine[1]_tests.cmake	29d975eeaffb8c15
-7500	12577	7201080356169452	E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine[1]_tests.cmake	29d975eeaffb8c15
-4	4793	7229783466018982	CMakeFiles/search_engine.dir/main.cpp.obj	2c1bf079ad889a2a
-4793	10261	7229783520765941	search_engine.exe	29d975eeaffb8c15
-4793	10261	7229783520765941	search_engine[1]_tests.cmake	29d975eeaffb8c15
-4793	10261	7229783520765941	E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine[1]_tests.cmake	29d975eeaffb8c15
-4	4725	7229784357584223	CMakeFiles/search_engine.dir/main.cpp.obj	2c1bf079ad889a2a
-4726	10009	7229784410493104	search_engine.exe	29d975eeaffb8c15
-4726	10009	7229784410493104	search_engine[1]_tests.cmake	29d975eeaffb8c15
-4726	10009	7229784410493104	E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine[1]_tests.cmake	29d975eeaffb8c15
-4	4909	7231437971162407	CMakeFiles/search_engine.dir/main.cpp.obj	2c1bf079ad889a2a
-4909	10588	7231438028011041	search_engine.exe	29d975eeaffb8c15
-4909	10588	7231438028011041	search_engine[1]_tests.cmake	29d975eeaffb8c15
-4909	10588	7231438028011041	E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine[1]_tests.cmake	29d975eeaffb8c15
-5	5036	7231439025595645	CMakeFiles/search_engine.dir/main.cpp.obj	2c1bf079ad889a2a
-5037	10393	7231439079232795	search_engine.exe	29d975eeaffb8c15
-5037	10393	7231439079232795	search_engine[1]_tests.cmake	29d975eeaffb8c15
-5037	10393	7231439079232795	E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine[1]_tests.cmake	29d975eeaffb8c15
-4	5288	7231442694067072	CMakeFiles/search_engine.dir/main.cpp.obj	2c1bf079ad889a2a
-5288	10704	7231442748300983	search_engine.exe	29d975eeaffb8c15
-5288	10704	7231442748300983	search_engine[1]_tests.cmake	29d975eeaffb8c15
-5288	10704	7231442748300983	E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine[1]_tests.cmake	29d975eeaffb8c15
-4	5139	7231568322673743	CMakeFiles/search_engine.dir/main.cpp.obj	2c1bf079ad889a2a
-5139	10914	7231568380506029	search_engine.exe	29d975eeaffb8c15
-5139	10914	7231568380506029	search_engine[1]_tests.cmake	29d975eeaffb8c15
-5139	10914	7231568380506029	E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine[1]_tests.cmake	29d975eeaffb8c15
 4	5100	7233089527855462	CMakeFiles/search_engine.dir/main.cpp.obj	2c1bf079ad889a2a
 5100	10910	7233089586015992	search_engine.exe	29d975eeaffb8c15
-5100	10910	7233089586015992	search_engine[1]_tests.cmake	29d975eeaffb8c15
 5100	10910	7233089586015992	E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/search_engine[1]_tests.cmake	29d975eeaffb8c15
+7	1014	7201080240545088	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	be77c1dca8cd4330
+7450	7500	7201080305417714	lib/libgtest_maind.a	2d8729c939ca1ce
+3	110	7254731096588674	src/CMakeFiles/SearchEngine.dir/SearchEngine.cpp.obj	b635154889fc04a2
+5100	10910	7233089586015992	search_engine[1]_tests.cmake	29d975eeaffb8c15
+6	5541	7201080285724533	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	cbb2f96d57dc5101
+5543	7450	7201080304909270	lib/libgtestd.a	9a30261c9583a960
+1	726	7254731610755849	build.ninja	bb36283f3b7919e7
+6	109	7254731096588674	src/CMakeFiles/SearchEngine.dir/Structs.cpp.obj	3b1e260c1179a140
+1	39	7254731593329163	src/CMakeFiles/SearchEngine.dir/Errors.cpp.obj	b44d061c75aeaeaf
+5	593	7254736428435265	src/CMakeFiles/SearchEngine.dir/Structs.cpp.obj	3b1e260c1179a140
+8	465	7254736630424813	src/CMakeFiles/SearchEngine.dir/Errors.cpp.obj	b44d061c75aeaeaf
+5	663	7254736762900445	src/CMakeFiles/SearchEngine.dir/InvertedIndex.cpp.obj	31f99d34b480114f

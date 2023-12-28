@@ -38,13 +38,12 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/nlohmann_json/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
+  # Include the install script for each subdirectory.
   include("E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/_deps/googletest-build/cmake_install.cmake")
+  include("E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/_deps/json-build/cmake_install.cmake")
+  include("E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/src/cmake_install.cmake")
+  include("E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/tests/cmake_install.cmake")
+
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

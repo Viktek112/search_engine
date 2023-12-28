@@ -1,9 +1,5 @@
 "C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.2.1/bin/ninja/win/ninja.exe" -G Ninja -S "E:\MyPathToGlory\My massive fucking project\search_engine" -B "E:\MyPathToGlory\My massive fucking project\search_engine\cmake-build-debug"
--- Using the multi-header code from E:/MyPathToGlory/My massive fucking project/search_engine/nlohmann_json/include/
-CMake Error at CMakeLists.txt:8 (target_link_libraries):
-  Cannot specify link libraries for target "search_engine" which is not built
-  by this project.
-
-
--- Configuring incomplete, errors occurred!
-See also "E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+-- Using the multi-header code from E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug/_deps/json-src/include/
+-- Configuring done
+-- Generating done
+-- Build files have been written to: E:/MyPathToGlory/My massive fucking project/search_engine/cmake-build-debug
