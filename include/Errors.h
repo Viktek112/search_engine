@@ -1,11 +1,5 @@
 #pragma once
 
-class OpeningError{
-public:
-    OpeningError() = default;
-};
+class OpeningError;
 
-class JsonFileContainingError{
-public:
-    JsonFileContainingError() = default;
-};
+class JsonFileContainingError;

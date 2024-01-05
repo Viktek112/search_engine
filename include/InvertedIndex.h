@@ -2,10 +2,7 @@
 #include <mutex>
 #include <iostream>
 
-class InvertedIndex{
-public:
-    InvertedIndex() = default;
-};
+class InvertedIndex;
 
 std::mutex freqAccess;
 
