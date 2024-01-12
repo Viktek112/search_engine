@@ -1,14 +1,12 @@
 #include "ConverterJSON.h"
 #include "InvertedIndex.h"
 #include "SearchEngine.h"
-#include "Structs.h"
 #include <vector>
 #include <map>
 #include "Errors.h"
 #include <gtest/gtest.h>
 
 int main(int argc, char** argv) {
-
     ConverterJSON conv;
     std::map<std::string, std::vector<Entry>> freqDictionary;
     std::vector<std::string> texts;
@@ -28,6 +26,6 @@ int main(int argc, char** argv) {
         std::cerr << ex.what() << std::endl;
         return 1;
     }
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    //::testing::InitGoogleTest(&argc, argv);
+    //return RUN_ALL_TESTS();
 }

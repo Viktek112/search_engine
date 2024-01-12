@@ -1,10 +1,6 @@
 #include "InvertedIndex.h"
-#include "Structs.h"
-#include <vector>
-#include <map>
-#include <sstream>
-#include <thread>
 
+std::mutex freqAccess;
 
 std::string wordCleaning(std::string word) {
     while ((word.back() >= 32 and word.back() <= 47) or (word.back() >= 58 and word.back() <= 64)
@@ -18,51 +14,45 @@ std::string wordCleaning(std::string word) {
     return word;
 }
 
-class InvertedIndex {
-private:
-    std::map<std::string, std::vector<Entry>> freqDictionary;
-    std::vector<std::string> docs = {};
 
-    void convertDocumentsIntoDatabase(const std::string& txt, size_t num) {
-        std::map<std::string,size_t> words;
-        std::istringstream iss(txt);
-        std::string buf;
-        while (!iss.eof()){
-            iss >> buf;
-            buf = wordCleaning(buf);
-            if (words.count(buf) == 0){
-                words.insert(std::pair<std::string,size_t>(buf,1));
-            } else {
-                words[buf] += 1;
-            }
-        }
-        for (auto & word : words) {
-            freqAccess.lock();
-            if (freqDictionary.count(word.first) == 0) {
-                std::pair <std::string,std::vector<Entry>> PaBuf(word.first,
-                                                                 static_cast<const std::vector<Entry>>(std::vector{
-                                                                         (Entry) {num, word.second}}));
-                freqDictionary.insert(PaBuf);
-            } else {
-                freqDictionary[word.first].push_back((Entry){num,word.second});
-            }
-            freqAccess.unlock();
+void InvertedIndex::convertDocumentsIntoDatabase(const std::string& txt, size_t num) {
+    std::map<std::string,size_t> words;
+    std::istringstream iss(txt);
+    std::string buf;
+    while (!iss.eof()){
+        iss >> buf;
+        buf = wordCleaning(buf);
+        if (words.count(buf) == 0){
+            words.insert(std::pair<std::string,size_t>(buf,1));
+        } else {
+            words[buf] += 1;
         }
     }
-
-public:
-    void UpdateDocumentBase(const std::vector<std::string>& doc) {
-        docs = doc;
-        std::vector<std::thread> threads = {};
-        for (int i = 0; i < doc.size(); i++) {
-            threads.emplace_back(&InvertedIndex::convertDocumentsIntoDatabase, this, docs[i], i);
+    for (auto & word : words) {
+        freqAccess.lock();
+        if (freqDictionary.count(word.first) == 0) {
+            std::pair <std::string,std::vector<Entry>> PaBuf(word.first,
+                                                             static_cast<const std::vector<Entry>>(std::vector{
+                                                                     (Entry) {num, word.second}}));
+            freqDictionary.insert(PaBuf);
+        } else {
+            freqDictionary[word.first].push_back((Entry){num,word.second});
         }
-        for (int i = 0; i < doc.size(); i++) {
-            threads[i].join();
-        }
+        freqAccess.unlock();
     }
+}
 
-    auto getFreqDictionary() {
-        return freqDictionary;
+void InvertedIndex::UpdateDocumentBase(const std::vector<std::string>& doc) {
+    docs = doc;
+    std::vector<std::thread> threads = {};
+    for (int i = 0; i < doc.size(); i++) {
+        threads.emplace_back(&InvertedIndex::convertDocumentsIntoDatabase, this, docs[i], i);
     }
-};
+    for (int i = 0; i < doc.size(); i++) {
+        threads[i].join();
+    }
+}
+
+std::map<std::string, std::vector<Entry>> InvertedIndex::getFreqDictionary() {
+    return freqDictionary;
+}
