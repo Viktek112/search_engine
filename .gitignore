@@ -1,3 +1,19 @@
+$ git rm --cached .idea
+rm '.idea'
+  
+$ git commit -m "Start ignoring .idea"
+
+$ git rm --cached cmake-build-debug
+rm 'cmake-build-debug'
+  
+$ git commit -m "Start ignoring cmake-build-debug"
+
+$ git rm --cached nlohmann_json
+rm 'nlohmann_json'
+  
+$ git commit -m "Start ignoring nlohmann_json"
+
 .idea
 cmake-build-debug
 nlohmann_json
+
