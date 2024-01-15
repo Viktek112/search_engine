@@ -1,13 +1,16 @@
+$ echo .idea >> .gitignore
 $ git rm --cached .idea
 rm '.idea'
   
 $ git commit -m "Start ignoring .idea"
 
+$ echo cmake-build-debug >> .gitignore
 $ git rm --cached cmake-build-debug
 rm 'cmake-build-debug'
   
 $ git commit -m "Start ignoring cmake-build-debug"
 
+$ echo nlohmann_json >> .gitignore
 $ git rm --cached nlohmann_json
 rm 'nlohmann_json'
   
