@@ -53,6 +53,7 @@ void InvertedIndex::UpdateDocumentBase(const std::vector<std::string>& doc) {
     }
 }
 
+
 std::map<std::string, std::vector<Entry>> InvertedIndex::getFreqDictionary() {
     return freqDictionary;
 }
