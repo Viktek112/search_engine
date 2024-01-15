@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
         searchSer.search(searchSer.requestsInput());
         texts = conv.GetTextDocuments();
         requests = conv.GetRequests();
-        conv.putAnswers({{{2,5.34},{8,12.7}},{{1,7.67},{2,34.67},{3,6.4}}});
+        conv.putAnswers(searchSer.search(requests));
     } catch (OpeningError &ex) {
         std::cerr << ex.what() << std::endl;
         return 1;

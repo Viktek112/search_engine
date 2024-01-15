@@ -65,7 +65,7 @@ std::vector<std::string> ConverterJSON::GetRequests(){
     }
 }
 
-void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float>>>answers){
+void ConverterJSON::putAnswers(std::vector<std::vector<RelativeIndex>>answers){
     for (int i = 0; i < answers.size(); i++) {
         std::string numOfRequest;
         for (int n = 0; n < 3-std::to_string(i).length();n++) {
@@ -77,8 +77,8 @@ void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float>>>an
             answersJsonFile["answers"]["request" + numOfRequest]["result"] = "true";
             for (auto & j : answers[i]) {
                 nlohmann::json::value_type block;
-                block["docid"] = j.first;
-                block["rank"] = j.second;
+                block["docid"] = j.docId;
+                block["rank"] = j.rank;
                 answersJsonFile["answers"]["request" + numOfRequest]["relevance"].push_back(block);
             }
         }

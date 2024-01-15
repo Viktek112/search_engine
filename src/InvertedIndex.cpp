@@ -3,12 +3,12 @@
 std::mutex freqAccess;
 
 std::string wordCleaning(std::string word) {
-    while ((word.back() >= 32 and word.back() <= 47) or (word.back() >= 58 and word.back() <= 64)
-           or (word.back() >= 91 and word.back() <= 96) or (word.back() >= 123 and word.back() <= 127)){
+    while ((word.back() >= ' ' and word.back() <= '/') or (word.back() >= ':' and word.back() <= '@')
+           or (word.back() >= '[' and word.back() <= '\'') or (word.back() >= '{' and word.back() <= '~')){
         word.erase(word.end()-1);
     }
-    while ((word.front() >= 32 and word.front() <= 47) or (word.front() >= 58 and word.front() <= 64)
-           or (word.front() >= 91 and word.front() <= 96) or (word.front() >= 123 and word.front() <= 127)){
+    while ((word.front() >= ' ' and word.front() <= '/') or (word.front() >= ':' and word.front() <= '@')
+           or (word.front() >= '[' and word.front() <= '\'') or (word.front() >= '{' and word.front() <= '~')){
         word.erase(0,1);
     }
     return word;

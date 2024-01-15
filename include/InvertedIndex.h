@@ -1,6 +1,5 @@
 #pragma once
 #include "Structs.h"
-#include "../src/Structs.cpp"
 #include <mutex>
 #include <iostream>
 #include <vector>

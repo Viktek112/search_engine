@@ -4,7 +4,6 @@ set(Src
         "ConverterJSON.cpp"
         "Errors.cpp"
         "SearchEngine.cpp"
-        "Structs.cpp"
         "InvertedIndex.cpp"
         "main.cpp"
         )

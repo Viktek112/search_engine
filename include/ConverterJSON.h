@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Structs.h"
 #include "nlohmann/json.hpp"
 
 class ConverterJSON {
@@ -21,5 +22,5 @@ public:
 
     std::vector<std::string> GetRequests();
 
-    void putAnswers(std::vector<std::vector<std::pair<int, float>>>answers);
+    void putAnswers(std::vector<std::vector<RelativeIndex>>answers);
 };
