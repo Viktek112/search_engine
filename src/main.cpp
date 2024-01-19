@@ -4,7 +4,6 @@
 #include <vector>
 #include <map>
 #include "Errors.h"
-#include <gtest/gtest.h>
 
 int main(int argc, char** argv) {
     ConverterJSON conv;
