@@ -16,6 +16,8 @@ private:
 public:
     ConverterJSON();
 
+    bool is_empty(std::ifstream& pFile);
+
     std::vector<std::string> GetTextDocuments();
 
     int GetResponsesLimit();

@@ -2,6 +2,11 @@
 #include "Errors.h"
 #include <fstream>
 
+bool ConverterJSON::is_empty(std::ifstream& pFile)
+{
+    return pFile.peek() == std::ifstream::traits_type::eof();
+}
+
 ConverterJSON::ConverterJSON() {
     std::ifstream ifSJsonFile(configJsonPath);
     if (ifSJsonFile.is_open()) {
@@ -66,6 +71,7 @@ std::vector<std::string> ConverterJSON::GetRequests(){
 }
 
 void ConverterJSON::putAnswers(std::vector<std::vector<RelativeIndex>>answers){
+
     for (int i = 0; i < answers.size(); i++) {
         std::string numOfRequest;
         for (int n = 0; n < 3-std::to_string(i).length();n++) {
@@ -83,8 +89,23 @@ void ConverterJSON::putAnswers(std::vector<std::vector<RelativeIndex>>answers){
             }
         }
         std::ofstream ofstreamJsonFile(answersJsonPath);
+        if (!ofstreamJsonFile.is_open()) {
+            throw AnswersFileGenerationError("opening error with path " + answersJsonPath);
+        }
         ofstreamJsonFile << answersJsonFile;
+        std::ifstream ifstreamJsonFile(answersJsonPath);
+        if (!ifstreamJsonFile.is_open()) {
+            throw AnswersFileGenerationError("opening error with path " + answersJsonPath);
+        }
+        if (!is_empty(ifstreamJsonFile)) {
+            nlohmann::json memory;
+            ifstreamJsonFile >> memory;
+            if (!(memory == answersJsonFile)) {
+                throw AnswersFileGenerationError("overwriting error");
+            }
+        }
         ofstreamJsonFile.close();
+        ifstreamJsonFile.close();
     }
 }
 

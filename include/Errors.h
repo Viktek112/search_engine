@@ -15,3 +15,10 @@ private:
 public:
     JsonFileContainingError(const std::string& fileName, const std::string& containerName);
 };
+
+class AnswersFileGenerationError: public std::exception {
+private:
+    std::string message;
+public:
+    AnswersFileGenerationError(const std::string& errorType);
+};

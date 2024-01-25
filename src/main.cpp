@@ -18,10 +18,14 @@ int main(int argc, char** argv) {
         texts = conv.GetTextDocuments();
         requests = conv.GetRequests();
         conv.putAnswers(searchSer.search(requests));
+        std::cout << "SearchEngine program has finished successfully." << std::endl;
     } catch (OpeningError &ex) {
         std::cerr << ex.what() << std::endl;
         return 1;
     } catch (JsonFileContainingError &ex) {
+        std::cerr << ex.what() << std::endl;
+        return 1;
+    } catch (AnswersFileGenerationError &ex) {
         std::cerr << ex.what() << std::endl;
         return 1;
     }

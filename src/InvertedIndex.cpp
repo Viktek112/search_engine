@@ -4,11 +4,11 @@ std::mutex freqAccess;
 
 std::string wordCleaning(std::string word) {
     while ((word.back() >= ' ' and word.back() <= '/') or (word.back() >= ':' and word.back() <= '@')
-           or (word.back() >= '[' and word.back() <= '\'') or (word.back() >= '{' and word.back() <= '~')){
+           or (word.back() >= '[' and word.back() <= '`') or (word.back() >= '{' and word.back() <= '~')){
         word.erase(word.end()-1);
     }
     while ((word.front() >= ' ' and word.front() <= '/') or (word.front() >= ':' and word.front() <= '@')
-           or (word.front() >= '[' and word.front() <= '\'') or (word.front() >= '{' and word.front() <= '~')){
+           or (word.front() >= '[' and word.front() <= '`') or (word.front() >= '{' and word.front() <= '~')){
         word.erase(0,1);
     }
     return word;
